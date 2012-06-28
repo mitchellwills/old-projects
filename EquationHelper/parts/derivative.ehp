@@ -1,0 +1,55 @@
+Derivative
+^!+D
+LISP
+(define execute (lambda (outputMode) 
+	(begin
+		(cond
+			[(equals? outputMode "OneNote")
+				(begin
+					(define dialog (newDialog this "Derivative" outputMode))
+					(addTextField dialog "Dependent Variable: " "dependent" "y")
+					(addTextField dialog "Independent Variable: " "independent" "x")
+					(addTextField dialog "Order: " "order" "1")
+					(showDialog dialog) )]
+		)
+		
+	)
+))
+
+(define insert (lambda (dialog outputMode) 
+	(begin
+		(define sequence (newKeySequence))
+
+		(if (equals? (get dialog "order") "1")
+			(begin
+				(appendType sequence " d")
+				(appendType sequence (get dialog "dependent"))
+				(appendType sequence "/d")
+				(appendType sequence (get dialog "independent"))
+				(appendType sequence " ")  )
+			(begin
+			
+				(appendType sequence " d")
+				
+				(appendType sequence "^(")
+				(appendType sequence (get dialog "order"))
+				(appendType sequence ") ")
+				
+				(appendType sequence (get dialog "dependent"))
+				(appendType sequence "/d")
+				(appendType sequence (get dialog "independent"))
+				
+				(appendType sequence "^(")
+				(appendType sequence (get dialog "order"))
+				(appendType sequence ")  ")
+				)
+		)
+
+
+		(executeSequence sequence)
+	)
+))
+
+(define supports? (lambda (outputMode)
+		(equals? outputMode "OneNote")
+))

@@ -1,0 +1,58 @@
+Integral
+^!+I
+LISP
+(define execute (lambda (outputMode) 
+	(begin
+		(cond
+			[(equals? outputMode "OneNote")
+				(begin
+					(define dialog (newDialog this "Integral" outputMode))
+					(addTextField dialog "Lower Bound: " "lowerBound" "0")
+					(addTextField dialog "Upper Bound: " "upperBound" "1")
+					(addTextField dialog "Content: " "content" "")
+					(addTextField dialog "Variable: " "variable" "x")
+					(showDialog dialog) )]
+			[(equals? outputMode "Text")
+				(sendUnicodeEvent #x222B)]
+		)
+		
+	)
+))
+
+(define insert (lambda (dialog outputMode) 
+	(begin
+		(define sequence (newKeySequence))
+		
+		(appendType sequence "\\int ")
+		
+		(if (not (empty? (get dialog "lowerBound")))
+			(begin
+				(appendType sequence "_(")
+				(appendType sequence (get dialog "lowerBound"))
+				(appendType sequence ")")
+			))
+			
+		
+		(if (not (empty? (get dialog "upperBound")))
+			(begin
+				(appendType sequence "^(")
+				(appendType sequence (get dialog "upperBound"))
+				(appendType sequence ")")
+			))
+			
+		(appendType sequence " (")
+		(appendType sequence (get dialog "content"))
+		
+		(appendType sequence ") d")
+		(appendType sequence (get dialog "variable"))
+		
+		(appendTypeVK sequence WinVK_RIGHT)
+		(executeSequence sequence)
+	)
+))
+
+(define supports? (lambda (outputMode)
+	(or
+		(equals? outputMode "Text")
+		(equals? outputMode "OneNote") )
+))

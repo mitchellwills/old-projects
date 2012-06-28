@@ -1,0 +1,22 @@
+Insert Equation
+
+LISP
+(define execute (lambda (outputMode) 
+	(begin
+		(cond
+			[(equals? outputMode "OneNote")
+				(begin
+					(define sequence (newKeySequence))
+					(appendPressVK sequence WinVK_MENU)
+					(appendTypeVK sequence WinVK_OEM_PLUS)
+					(appendReleaseVK sequence WinVK_MENU)
+					(executeSequence sequence)
+				 )]
+		)
+		
+	)
+))
+
+(define supports? (lambda (outputMode)
+		(equals? outputMode "OneNote")
+))

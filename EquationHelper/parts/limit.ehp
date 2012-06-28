@@ -1,0 +1,37 @@
+Limit
+^!+L
+LISP
+(define execute (lambda (outputMode) 
+	(begin
+		(cond
+			[(equals? outputMode "OneNote")
+				(begin
+					(define dialog (newDialog this "Limit" outputMode))
+					(addTextField dialog "Index Variable: " "variable" "x")
+					(addTextField dialog "Limit: " "limit" "0")
+					(addTextField dialog "Content: " "content" "")
+					(showDialog dialog) )]
+		)
+		
+	)
+))
+
+(define insert (lambda (dialog outputMode) 
+	(begin
+		(define sequence (newKeySequence))
+
+		(appendType sequence "lim_(")
+		(appendType sequence (get dialog "variable"))
+		(appendType sequence "->")
+		(appendType sequence (get dialog "limit"))
+		(appendType sequence ") ")
+		(appendType sequence (get dialog "content"))
+
+		(appendTypeVK sequence WinVK_RIGHT)
+		(executeSequence sequence)
+	)
+))
+
+(define supports? (lambda (outputMode)
+		(equals? outputMode "OneNote")
+))

@@ -1,0 +1,44 @@
+Summation
+^!+S
+LISP
+(define execute (lambda (outputMode) 
+	(begin
+		(cond
+			[(equals? outputMode "OneNote")
+				(begin
+					(define dialog (newDialog this "Summation" outputMode))
+					(addTextField dialog "Index Variable: " "index" "i")
+					(addTextField dialog "Lower Bound: " "lowerBound" "0")
+					(addTextField dialog "Upper Bound: " "upperBound" "n")
+					(addTextField dialog "Content: " "content" "")
+					(showDialog dialog) )]
+			[(equals? outputMode "Text")
+				(sendUnicodeEvent #x2211)]
+		)
+		
+	)
+))
+
+(define insert (lambda (dialog outputMode) 
+	(begin
+		(define sequence (newKeySequence))
+		(appendType sequence "\\sum _(")
+		(appendType sequence (get dialog "index"))
+		(appendType sequence "=")
+		(appendType sequence (get dialog "lowerBound"))
+		(appendType sequence ")")
+		(appendType sequence "^(")
+		(appendType sequence (get dialog "upperBound"))
+		(appendType sequence ") (")
+		(appendType sequence (get dialog "content"))
+		(appendType sequence ") ")
+		(appendTypeVK sequence WinVK_RIGHT)
+		(executeSequence sequence)
+	)
+))
+
+(define supports? (lambda (outputMode)
+	(or
+		(equals? outputMode "Text")
+		(equals? outputMode "OneNote") )
+))

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:controller="assistant.textCase.CasePanel"
+	xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10" />
+	</padding>
+
+	<center>
+		<VBox>
+			
+			<TextArea text="" fx:id="sourceTextArea" VBox.vgrow="ALWAYS" />
+			
+			<ToolBar>
+					<fx:define>
+	        			<ToggleGroup fx:id="caseSelectGroup"/>
+	    			</fx:define>
+			        <RadioButton text="Upper Case" fx:id="upperCaseToggle" toggleGroup="$caseSelectGroup" selected="true"/>
+			        <RadioButton text="Lower Case" fx:id="lowerCaseToggle" toggleGroup="$caseSelectGroup"/>
+			        <RadioButton text="Camel Case" fx:id="camelCaseToggle" toggleGroup="$caseSelectGroup"/>
+			        <RadioButton text="Mod Camel Case" fx:id="modCamelCaseToggle" toggleGroup="$caseSelectGroup"/>
+			        <RadioButton text="Constant Name" fx:id="constantNameToggle" toggleGroup="$caseSelectGroup"/>
+			</ToolBar>
+
+			<TextArea text="" fx:id="outputTextArea" editable="false"
+				VBox.vgrow="ALWAYS" />
+		</VBox>
+	</center>
+
+</BorderPane>

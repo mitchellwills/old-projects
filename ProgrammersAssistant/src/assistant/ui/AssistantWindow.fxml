@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:controller="assistant.ui.AssistantWindowController"
+	xmlns:fx="http://javafx.com/fxml">
+	<top>
+		<fx:include source="AssistantWindowMenu.fxml"/>
+	</top>
+	<center>
+		<TabPane tabClosingPolicy="UNAVAILABLE">
+			<Tab text="Regular Expression">
+				<content>
+					<fx:include source="../regex/RegularExpressionPanel.fxml"/>
+				</content>
+			</Tab>
+			<Tab text="Text Case">
+				<content>
+					<fx:include source="../textCase/CasePanel.fxml"/>
+				</content>
+			</Tab>
+		</TabPane>
+	</center>
+
+</BorderPane>

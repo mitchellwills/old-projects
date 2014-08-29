@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:controller="assistant.regex.RegularExpressionPanel"
+	xmlns:fx="http://javafx.com/fxml">
+	<padding>
+		<Insets top="10" right="10" bottom="10" left="10" />
+	</padding>
+
+	<center>
+		<SplitPane orientation="VERTICAL" fx:id="splitPane">
+			<VBox spacing="5" minHeight="140">
+				<Text text="Search Pattern" />
+				<TextArea text="" fx:id="matcherRegexArea" prefRowCount="3"
+					VBox.vgrow="ALWAYS" />
+
+				<HBox spacing="5">
+					<CheckBox text="Multiline" fx:id="multilinePatternCheckbox" />
+					<CheckBox text="Case Insensitive" fx:id="caseInsensitivePatternCheckbox" />
+					<CheckBox text="Dot All" fx:id="dotAllPatternCheckbox" />
+				</HBox>
+
+				<Text text="Replace Pattern" />
+				<TextArea text="" fx:id="replaceArea" prefRowCount="3"
+					VBox.vgrow="ALWAYS" />
+
+				<Text text="" fx:id="errorField" fill="RED" VBox.vgrow="NEVER" />
+			</VBox>
+
+			<VBox>
+
+				
+				<ToolBar>
+					<Button text="Load From File" onAction="#loadInputFromFile" />
+				</ToolBar>
+				
+				<TextArea text="" fx:id="sourceTextArea" VBox.vgrow="ALWAYS" />
+
+				<TextArea text="" fx:id="outputTextArea" editable="false"
+					VBox.vgrow="ALWAYS" />
+				
+				<ToolBar>
+					<Button text="Copy" onAction="#copyOutput" />
+					<Button text="Move to Source" onAction="#moveOutputToSource" />
+					<Button text="Save to File" onAction="#saveOutputToFile" />
+				</ToolBar>
+			</VBox>
+		</SplitPane>
+	</center>
+	
+	<right>
+		<VBox>
+			<ListView fx:id="predefinedList" editable="false"
+			VBox.vgrow="ALWAYS"/>
+		</VBox>
+	</right>
+
+</BorderPane>

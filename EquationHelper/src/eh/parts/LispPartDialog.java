@@ -91,15 +91,6 @@ public class LispPartDialog extends JDialog {
 		addRow(label, field);
 		fields.put(name, field);
 	}
-	public void addComboBoxField(String label, String name, String defaultValue){
-		JComboBox field = new JComboBox(defaultValue);
-		addRow(label, field);
-		fields.put(name, field);
-	}
-	public String get(String name){
-		private Object field = fields.get(name);
-		return field.getText();
-	}
 
 	protected void insert(OutputMode mode){
 		try {

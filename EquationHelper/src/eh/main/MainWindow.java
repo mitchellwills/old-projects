@@ -22,8 +22,7 @@ import eh.parts.Part;
 import eh.parts.PartManager;
 import eh.util.WindowPosition;
 
-public class MainWindow extends JFrame implements OptionListener,
-		ComponentListener {
+public class MainWindow extends JFrame implements OptionListener, ComponentListener {
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setAlwaysOnTop(true);

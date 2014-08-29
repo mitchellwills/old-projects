@@ -1,4 +1,4 @@
-
+*.class
 /SiteGenerator/bin
 /EquationHelper/bin
 /LispInterpreter/bin

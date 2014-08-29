@@ -68,12 +68,6 @@ public class EHLispContext extends LispContext {
 	public static void addTextField(LispPartDialog dialog, String label, String name, String defaultValue){
 		dialog.addTextField(label, name, defaultValue);
 	}
-	public static void addComboBoxField(LispPartDialog dialog, String label, String name, String defaultValue){
-		dialog.addComboBoxField(label, name, defaultValue);
-	}
-	public static String get(LispPartDialog dialog, String name){
-		return dialog.get(name);
-	}
 	
 	
 	//keyboard outputs
